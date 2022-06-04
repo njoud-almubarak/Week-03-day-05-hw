@@ -45,7 +45,13 @@ public class Bookscontroller {
     public ResponseEntity<API> checkbookid(@PathVariable Integer id){
         bookservice.checkbookid(id);
         return ResponseEntity.status(200).body(new API("Valid book",200));}
-
+    
+    @PostMapping("lendbook/{uid}/{bid}")
+    public ResponseEntity<API> lendbook(@PathVariable Integer uid,Integer bid) {
+      
+        bookservice.lendbook(uid,bid);
+        logger.info("book is lended");
+        return ResponseEntity.status(200).body(new API("the book is lended",200));}
 
   /*  @GetMapping("lendedbook")
     public ResponseEntity<List<Loan>> lendedbook(@PathVariable Integer bid){
